@@ -50,7 +50,7 @@ traceability, code quality and others.
  * Rake 10.4
  * Guard-rspec 4.2
  * nokogiri 1.6.6
-* Ruby version: 2.1
+* Ruby version: 1.9 (or greater)
 * Run test suit
  * rake or spec
 * YARD documentation
