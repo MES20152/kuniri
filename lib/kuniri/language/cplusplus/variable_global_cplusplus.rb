@@ -16,6 +16,8 @@ module Languages
 
           listOfVariable = []
 
+          result = remove_unnecessary_information(result)
+
           # Separated by comma, equal or the common case
           if result.split(",").size > 1
             listOfVariable = handle_multiple_declaration_with_comma(result)
@@ -31,19 +33,18 @@ module Languages
       protected
 
         def detect_variable(pLine)
-          # Check basic case of non variable. Ex.: value x
-          pLine.gsub!(/^\s*/, "")
-          pLine.gsub!(/\s*$/, "")
-          return nil if pLine =~ /end/
-          return nil if pLine =~ /^def\s+/
-          return pLine if pLine.split(",").size > 1
-          return pLine if pLine.split("=").size > 1
-
-          return nil if pLine.split(" ").size > 1
-          return pLine
+          regexExp = /^\s*(\w*\s+.*;)\s*/
+          return nil unless pLine =~ regexExp
+          return pLine.scan(regexExp)[0].join("")
         end
 
         def remove_unnecessary_information(pLine)
+          pLine.gsub!(/\s+/," ") if pLine =~ /\s+/
+          pLine.gsub!(/\s*\[\]\s*/,"") if pLine =~ /\s*\[\]\s*/
+          pLine.gsub!(/\=(.*?),/,", ") if pLine =~ /\=(.*?),/
+          pLine.gsub!(/\=(.*?);/,";") if pLine =~ /\=(.*?);/
+          pLine.gsub!(/\s*,\s*/,",") if pLine =~ /\s*,\s*/
+          pLine.gsub!(/\s*;\s*/,"") if pLine =~ /\s*;\s*/
           return pLine
         end
 
@@ -58,16 +59,17 @@ module Languages
         # Override
         def handle_multiple_declaration_with_comma(pString)
           listOfVariable = []
+          kind = pString.split(" ")[0] #Get the kind of the variables.
           pString = pString.split(",")
           pString.each do |variable|
-            return nil if variable.split("=").size > 2
+            return nil if variable.scan(/,/).count > 1
 
-            variable = variable.scan(/.*=/).join("") if variable =~ /.*=/
+            variable.gsub!(/#{kind}\s/,"") if variable =~ /#{kind}\s/
+            variable = variable.scan(/.*,/).join("") if variable =~ /.*,/
 
             return nil if variable =~ /\./
 
-            variable = prepare_final_string(variable)
-            globalVariable = Languages::VariableGlobalData.new(variable)
+            globalVariable = Languages::VariableGlobalData.new(kind + " " + variable)
             listOfVariable.push(globalVariable)
           end
 
@@ -78,10 +80,10 @@ module Languages
         def handle_multiple_declaration_with_equal(pString)
           listOfVariable = []
           pString = pString.split("=")
-          pString.each do |variable|
-            return nil if variable =~ /\./
 
-            variable = prepare_final_string(variable)
+          pString.each do |variable|
+            return nil if variable =~ /=/
+
             globalVariable = Languages::VariableGlobalData.new(variable)
             listOfVariable.push(globalVariable)
           end
@@ -92,7 +94,7 @@ module Languages
 
         # Override
         def handle_line_declaration(pString)
-          listOfVariable = []
+         listOfVariable = []
           if pString =~ /=/
             pString = pString.scan(/.*=/).join("")
             return nil if pString =~ /\./
@@ -100,7 +102,6 @@ module Languages
 
           return nil if pString =~ /\./
 
-          pString = prepare_final_string(pString)
           globalVariable = Languages::VariableGlobalData.new(pString)
           listOfVariable.push(globalVariable)
 

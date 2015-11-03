@@ -1,0 +1,13 @@
+int one = 1;
+Example two;
+int    three;
+int four [];
+double five =    8;
+float      six;
+string seven = "test";
+char eight = "#";
+    int nine = 9;
+  string ten = "ten";
+int eleven          =       11;
+int tweve, thirteen = 2;
+int fourteen = fifteen = 14 + 15;
