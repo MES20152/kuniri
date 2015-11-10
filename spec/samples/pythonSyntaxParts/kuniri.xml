@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<kuniri>
+  <class_data name="Simple1"/>
+  <class_data name="SimplesExemplo">
+    <method name="method1" visibility="global">
+      <parameter name="self"/>
+      <parameter name="numero"/>
+      <parameter name="tel"/>
+    </method>
+  </class_data>
+</kuniri>
