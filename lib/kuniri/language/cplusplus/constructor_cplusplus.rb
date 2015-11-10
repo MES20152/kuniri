@@ -18,10 +18,10 @@ module Languages
 
           if(class_name == result.name)
             result.type = "CONSTRUCTOR"
+            return result
+          else
+            return nil
           end
-
-          return result
-
         end
 
       private

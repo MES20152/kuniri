@@ -99,301 +99,233 @@ RSpec.describe Languages::CplusplusSyntax do
     end
   end
 
-  # context "Module declaration." do
-  #   it "Correct state transition." do
-  #     path = "spec/samples/rubySyntaxParts/module/simpleModule.rb"
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+  context "Module declaration." do
+    it "Correct state transition." do
+      path = "spec/samples/cplusplusSyntaxParts/module/simpleModule.cpp"
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (module)" do
-  #     path = "spec/samples/rubySyntaxParts/module/simpleModule.rb"
+    it "Correct data capture (module)" do
+      path = "spec/samples/cplusplusSyntaxParts/module/simpleModule.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].modules[0].name)
-  #       .to eq("Xpto")
-  #     expect(@syntax.fileElements[0].modules[1].name)
-  #       .to eq("Abc")
-  #     expect(@syntax.fileElements[0].modules[2].name)
-  #       .to eq("Simple")
-  #   end
-  # end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].modules[0].name)
+        .to eq("Xpto")
+      expect(@syntax.fileElements[0].modules[1].name)
+        .to eq("Abc")
+      expect(@syntax.fileElements[0].modules[2].name)
+        .to eq("Simple")
+    end
+  end
 
-  # context "Class declaration" do
-  #   it "Correct state transition." do
-  #     path = "spec/samples/rubySyntaxParts/class/simpleClass.rb"
+  context "Class declaration" do
+    it "Correct state transition." do
+      path = "spec/samples/cplusplusSyntaxParts/class/simpleClass.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (class)." do
-  #     path = "spec/samples/rubySyntaxParts/class/simpleClass.rb"
+    it "Correct data capture (class)." do
+      path = "spec/samples/cplusplusSyntaxParts/class/simpleClass.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].name).to eq("Simple1")
-  #     expect(@syntax.fileElements[0].classes[1].name).to eq("Simple2")
-  #     expect(@syntax.fileElements[0].classes[2].name).to eq("Simple3")
-  #     expect(@syntax.fileElements[0].classes[3].name).to eq("Simple4")
-  #     expect(@syntax.fileElements[0].classes[4].name).to eq("Simple5")
-  #   end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].name).to eq("Simple1")
+      expect(@syntax.fileElements[0].classes[1].name).to eq("Simple2")
+      expect(@syntax.fileElements[0].classes[2].name).to eq("Simple3")
+      expect(@syntax.fileElements[0].classes[3].name).to eq("Simple4")
+      expect(@syntax.fileElements[0].classes[4].name).to eq("Simple5")
+    end
 
-  # end
+  end
 
-  # context "Attribute line" do
-  #   it "Correct state transition." do
-  #     path = "spec/samples/rubySyntaxParts/attribute/simpleAttribute.rb"
+  context "Attribute line" do
+    it "Correct state transition." do
+      path = "spec/samples/cplusplusSyntaxParts/attribute/simpleAttribute.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (attribute)" do
-  #     path = "spec/samples/rubySyntaxParts/attribute/simpleAttribute.rb"
+    it "Correct data capture (attribute)" do
+      path = "spec/samples/cplusplusSyntaxParts/attribute/simpleAttribute.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].attributes[0].name)
-  #       .to eq("attribute1")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[1].name)
-  #       .to eq("attribute2")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[2].name)
-  #       .to eq("attribute3")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[3].name)
-  #       .to eq("attribute4")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[4].name)
-  #       .to eq("attribute5")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[5].name)
-  #       .to eq("attribute6")
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].attributes[0].name)
+        .to eq("int attribute1")
+      expect(@syntax.fileElements[0].classes[0].attributes[1].name)
+        .to eq("double attribute2")
+      expect(@syntax.fileElements[0].classes[0].attributes[2].name)
+        .to eq("string attribute3")
+      expect(@syntax.fileElements[0].classes[0].attributes[3].name)
+        .to eq("float attribute4")
+      expect(@syntax.fileElements[0].classes[0].attributes[4].name)
+        .to eq("char attribute5")
+      expect(@syntax.fileElements[0].classes[0].attributes[5].name)
+        .to eq("int attribute6")
 
-  #   end
-  # end
+    end
+  end
 
-  # context "Method line" do
-  #   it "Correct state transition." do
-  #     path = "spec/samples/rubySyntaxParts/method/simpleMethod.rb"
+  context "Method line" do
+    it "Correct state transition." do
+      path = "spec/samples/cplusplusSyntaxParts/method/simpleMethod.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (method)" do
-  #     path = "spec/samples/rubySyntaxParts/method/simpleMethod.rb"
+    it "Correct data capture (method)" do
+      path = "spec/samples/cplusplusSyntaxParts/method/simpleMethod.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].name)
-  #       .to eq("method1")
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].name)
-  #       .to eq("method2")
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].name)
-  #       .to eq("method3")
-  #     expect(@syntax.fileElements[0].classes[0].methods[3].name)
-  #       .to eq("method4")
-  #     expect(@syntax.fileElements[0].classes[0].methods[4].name)
-  #       .to eq("method5")
-  #   end
-  # end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].methods[0].name)
+        .to eq("method1")
+      expect(@syntax.fileElements[0].classes[0].methods[1].name)
+        .to eq("method2")
+      expect(@syntax.fileElements[0].classes[0].methods[2].name)
+        .to eq("method3")
+    end
+  end
 
-  # context "Constructor line" do
-  #   it "Correct state transition." do
-  #     path = "spec/samples/rubySyntaxParts/constructor/simpleConstructor.rb"
+  context "Constructor line" do
+    it "Correct state transition." do
+      path = "spec/samples/cplusplusSyntaxParts/constructor/simpleConstructor.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (constructor)" do
-  #     path = "spec/samples/rubySyntaxParts/constructor/simpleConstructor.rb"
+    it "Correct data capture (constructor)" do
+      path = "spec/samples/cplusplusSyntaxParts/constructor/simpleConstructor.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].name)
-  #       .to eq("initialize")
-  #     expect(@syntax.fileElements[0].classes[1].constructors[0].name)
-  #       .to eq("initialize")
-  #   end
-  # end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].constructors[0].name)
+        .to eq("Simple1")
+      expect(@syntax.fileElements[0].classes[1].constructors[0].name)
+        .to eq("Simple2")
+    end
+  end
 
-  # context "Conditional line" do
-  #   it "Correct state transition (Global function)." do
-  #     path =
-  #       "spec/samples/rubySyntaxParts/conditionalStatment/simpleConditional.rb"
+  context "Conditional line" do
+    it "Correct state transition (Method)." do
+      path =
+        "spec/samples/cplusplusSyntaxParts/conditionalStatment/methodConditional.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (conditional - Global function)" do
-  #      path =
-  #       "spec/samples/rubySyntaxParts/conditionalStatment/simpleConditional.rb"
+    it "Correct data capture (conditional - method)" do
+       path =
+        "spec/samples/cplusplusSyntaxParts/conditionalStatment/methodConditional.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].global_functions[0].name)
-  #       .to eq("simple1")
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].methods[0].name)
+        .to eq("simple1")
 
-  #     expect(@syntax.fileElements[0].global_functions[0]
-  #           .conditionals[0].expression).to eq("3 > 2")
-  #     expect(@syntax.fileElements[0].global_functions[0]
-  #           .conditionals[0].type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].methods[0]
+            .conditionals[0].expression).to eq("3 > 2")
+      expect(@syntax.fileElements[0].classes[0].methods[0]
+            .conditionals[0].type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].methods[0]
+            .conditionals[1].expression).to eq("3 > 2")
+      expect(@syntax.fileElements[0].classes[0].methods[0]
+            .conditionals[1].type).to eq("SWITCH")
 
-  #     expect(@syntax.fileElements[0].global_functions[1].name)
-  #       .to eq("simple2")
-  #     expect(@syntax.fileElements[0].global_functions[1]
-  #           .conditionals[0].expression).to eq("7 > 2")
-  #     expect(@syntax.fileElements[0].global_functions[1]
-  #           .conditionals[0].type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].methods[1].name)
+        .to eq("simple2")
 
-  #     expect(@syntax.fileElements[0].global_functions[1]
-  #           .conditionals[1].expression).to eq("\"a\" < \"k\"")
-  #     expect(@syntax.fileElements[0].global_functions[1]
-  #           .conditionals[1].type).to eq("IF")
-  #   end
+      expect(@syntax.fileElements[0].classes[0].methods[1]
+            .conditionals[0].expression).to eq("\"a\" < \"k\"")
+      expect(@syntax.fileElements[0].classes[0].methods[1]
+            .conditionals[0].type).to eq("IF")
+    end
 
-  #   it "Correct state transition (Method)." do
-  #     path =
-  #       "spec/samples/rubySyntaxParts/conditionalStatment/methodConditional.rb"
+    it "Correct state transition (Constructor)." do
+      path = "spec/samples/cplusplusSyntaxParts/" +
+              "constructor/simpleConstructor.cpp"
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+      @syntax.analyse_source(path)
+      expect(@syntax.state)
+        .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
+    end
 
-  #   it "Correct data capture (conditional - method)" do
-  #      path =
-  #       "spec/samples/rubySyntaxParts/conditionalStatment/methodConditional.rb"
+    it "Correct data capture (conditional - method)" do
+       path = "spec/samples/cplusplusSyntaxParts/" +
+                "constructor/simpleConstructor.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].name)
-  #       .to eq("method1")
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].constructors[0].name)
+          .to eq("Simple1")
 
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].conditionals[0]
-  #             .expression).to eq("x > 3")
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].conditionals[0]
-  #             .type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
+              .expression).to eq("3 > 2")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
+              .type).to eq("IF")
 
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].name)
-  #       .to eq("method2")
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].conditionals[0]
-  #             .expression).to eq("b && c")
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].conditionals[0]
-  #             .type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
+              .expression).to eq("u && y")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
+              .type).to eq("IF")
 
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].name)
-  #       .to eq("method3")
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].conditionals[0]
-  #             .expression).to eq("b == 3")
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].conditionals[1]
-  #             .expression).to eq("b < 7")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
+              .expression).to eq("u == 1")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
+              .type).to eq("ELSIF")
+    end
 
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].conditionals[0]
-  #             .type).to eq("IF")
+    it "Correct data capture (repetition[while] -  Method)" do
+       path = "spec/samples/cplusplusSyntaxParts/repetition/simpleRepetition.cpp"
 
-  #     expect(@syntax.fileElements[0].classes[0].methods[3].name)
-  #       .to eq("method4")
-  #     expect(@syntax.fileElements[0].classes[0].methods[3].conditionals[0]
-  #             .expression).to eq("x")
-  #   end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].methods[0].name)
+          .to eq("simple1")
 
-  #   it "Correct state transition (Constructor)." do
-  #     path = "spec/samples/rubySyntaxParts/" +
-  #             "conditionalStatment/constructorConditional.rb"
+      expect(@syntax.fileElements[0].classes[0].methods[0].repetitions[0]
+              .expression).to eq("i < num")
+    end
 
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.state)
-  #       .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
-  #   end
+    it "Correct data capture (repetition[for] -  Method)" do
+      path = "spec/samples/cplusplusSyntaxParts/repetition/simpleRepetition.cpp"
 
-  #   it "Correct data capture (conditional - method)" do
-  #      path = "spec/samples/rubySyntaxParts/" +
-  #               "conditionalStatment/constructorConditional.rb"
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].methods[1].name)
+          .to eq("simple2")
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].name)
-  #         .to eq("initialize")
+      expect(@syntax.fileElements[0].classes[0].methods[1].repetitions[0]
+              .expression).to eq("int i = 0; i < 5; ++i")
+    end
 
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
-  #             .expression).to eq("a > b")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
-  #             .type).to eq("IF")
+  end
 
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
-  #             .expression).to eq("x")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
-  #             .type).to eq("CASE")
-
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
-  #             .expression).to eq("u && y")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
-  #             .type).to eq("IF")
-
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[3]
-  #             .expression).to eq("u == 1")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[3]
-  #             .type).to eq("ELSIF")
-  #   end
-
-  #   it "Correct data capture (repetition[while] -  Method)" do
-  #      path = "spec/samples/rubySyntaxParts/repetition/simpleRepetition.rb"
-
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].name)
-  #         .to eq("simple1")
-
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].repetitions[0]
-  #             .expression).to eq("i < num")
-  #   end
-
-  #   it "Correct data capture (repetiton[util] - Method)" do
-  #     path = "spec/samples/rubySyntaxParts/repetition/simpleRepetition.rb"
-
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].name)
-  #         .to eq("simple2")
-
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].repetitions[0]
-  #             .expression).to eq("i > num")
-
-  #   end
-
-  #   it "Correct data capture (repetition[for] -  Method)" do
-  #     path = "spec/samples/rubySyntaxParts/repetition/simpleRepetition.rb"
-
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].name)
-  #         .to eq("simple2")
-
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].repetitions[1]
-  #             .expression).to eq("i in 0..5")
-  #   end
-
-  # end
-
-  # context "Comments" do
+  context "Comments" do
 
   #   it "Correct single line comment capture - Globals" do
 
-  #     path = "spec/samples/rubySyntaxParts/" +
-  #             "comment/simple_single_line_comment_global.rb"
+  #     path = "spec/samples/cplusplusSyntaxParts/" +
+  #             "comment/simple_single_line_comment_global.cpp"
 
   #     @syntax.analyse_source(path)
   #     expect(@syntax.fileElements[0].comments).to eq(" First comment\n")
@@ -405,29 +337,29 @@ RSpec.describe Languages::CplusplusSyntax do
   #             .to eq(" Comment 4\n")
   #   end
 
-  #   it "Correct single line comment capture - Class" do
+    it "Correct single line comment capture - Class" do
 
-  #     path = "spec/samples/rubySyntaxParts/" +
-  #             "comment/simple_single_line_comment_class.rb"
+      path = "spec/samples/cplusplusSyntaxParts/" +
+              "comment/simple_single_line_comment_class.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].comments)
-  #             .to eq(" Comment 1: class\n")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].comments)
-  #             .to eq(" Comment 2: constructor\n")
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].comments)
-  #             .to eq(" Comment 3: method\n")
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].comments)
-  #             .to eq(" Comment 4: Combo 1\n Comment 5: "+
-  #                     "Combo 2\n Comment 6: Combo 3; Combo 4\n")
-  #     expect(@syntax.fileElements[0].classes[0].attributes[0].comments)
-  #             .to eq (" Comment 7: Attribute\n")
-  #   end
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].comments)
+              .to eq(" Comment 1: class\n")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].comments)
+              .to eq(" Comment 2: constructor\n")
+      expect(@syntax.fileElements[0].classes[0].methods[0].comments)
+              .to eq(" Comment 3: method\n")
+      expect(@syntax.fileElements[0].classes[0].methods[1].comments)
+              .to eq(" Comment 4: Combo 1\n Comment 5: "+
+                      "Combo 2\n Comment 6: Combo 3 Combo 4\n")
+      expect(@syntax.fileElements[0].classes[0].attributes[0].comments)
+              .to eq (" Comment 7: Attribute\n")
+    end
 
   #   it "Correct multiple line comment capture - Global" do
 
-  #     path = "spec/samples/rubySyntaxParts/" +
-  #             "comment/simple_multiple_line_comment_global.rb"
+  #     path = "spec/samples/cplusplusSyntaxParts/" +
+  #             "comment/simple_multiple_line_comment_global.cpp"
 
   #     @syntax.analyse_source(path)
   #     expect(@syntax.fileElements[0].comments)
@@ -438,26 +370,26 @@ RSpec.describe Languages::CplusplusSyntax do
   #             .to eq("global\n")
   #   end
 
-  #   it "Correct multiple line comment capture - Class" do
+    it "Correct multiple line comment capture - Class" do
 
-  #     path = "spec/samples/rubySyntaxParts/" +
-  #             "comment/simple_multiple_line_comment_class.rb"
+      path = "spec/samples/cplusplusSyntaxParts/" +
+              "comment/simple_multiple_line_comment_class.cpp"
 
-  #     @syntax.analyse_source(path)
-  #     expect(@syntax.fileElements[0].classes[0].comments)
-  #             .to eq("This is the\nfirst class\nof this file.\n")
-  #     expect(@syntax.fileElements[0].classes[0].constructors[0].comments)
-  #             .to eq("    Constructor\n    initialize\n")
-  #     expect(@syntax.fileElements[0].classes[0].methods[0].comments)
-  #             .to eq("    First method\n")
-  #     expect(@syntax.fileElements[0].classes[0].methods[1].comments)
-  #             .to eq("    methodTwo\n")
-  #     expect(@syntax.fileElements[0].classes[0].methods[2].comments)
-  #             .to eq("    method;Three\n")
+      @syntax.analyse_source(path)
+      expect(@syntax.fileElements[0].classes[0].comments)
+              .to eq("This is the\nfirst class\nof this file.\n")
+      expect(@syntax.fileElements[0].classes[0].constructors[0].comments)
+              .to eq("    Constructor\n    initialize\n")
+      expect(@syntax.fileElements[0].classes[0].methods[0].comments)
+              .to eq("    First method;\n")
+      expect(@syntax.fileElements[0].classes[0].methods[1].comments)
+              .to eq("    methodTwo\n")
+      expect(@syntax.fileElements[0].classes[0].methods[2].comments)
+              .to eq("    method;Three\n")
 
-  #   end
+    end
 
-  # end
+  end
 
   after :each do
     @syntax = nil

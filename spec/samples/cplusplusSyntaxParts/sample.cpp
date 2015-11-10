@@ -1,14 +1,13 @@
-class Sample {
-	public:
-		Sample(){}
-		~Sample(){}
-		print();
-};
+#include <iostream>
 
-Sample::Sample(){
+class Sample : public Example {
+	Sample::Sample(){
 
-}
+	}
 
-void Sample::print(){
+	void Sample::print(int a, double b){
+
+	}
+
 
 }

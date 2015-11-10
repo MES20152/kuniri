@@ -81,7 +81,6 @@ module Languages
         end
 
         def handling_parameter(pLine)
-          # Handling with parenthesis and without it.
           if pLine =~ /\(.+\)/
             partial = get_parameters(pLine, /\(.+\)/)
           else

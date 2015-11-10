@@ -28,7 +28,7 @@ module Languages
           regexExp = /^\s*if\s+(.*)/
           return pLine.scan(regexExp)[0].join("") if regexExp =~ pLine
 
-          regexExp = /^\s*switch\s+(.*)/
+          regexExp = /^\s*switch\s*(.*)/
           return pLine.scan(regexExp)[0].join("") if regexExp =~ pLine
 
           regexExp = /^\s*else\s+if\s+(.*)/
@@ -58,6 +58,7 @@ module Languages
 
         def remove_unnecessary_information(pLine)
           pLine.gsub!(/\s+/, " ") if pLine =~ /\s+/
+          pLine.gsub!(/\{/, "") if pLine =~ /\{/
           pLine.gsub!(/\(|\)/, "") if pLine =~ /\(|\)/
           return pLine
         end

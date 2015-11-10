@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
 <kuniri>
-  <class_data name="Sample{"/>
+  <class_data name="Sample">
+    <method name="Sample"/>
+    <method name="print">
+      <parameter name="int a"/>
+      <parameter name="double b"/>
+    </method>
+  </class_data>
 </kuniri>

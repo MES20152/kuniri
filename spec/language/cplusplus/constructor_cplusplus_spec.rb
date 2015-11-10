@@ -35,8 +35,8 @@ RSpec.describe Languages::Cplusplus::ConstructorCplusplus do
 
     it "No constructor" do
       input = "Xpto::Xpto2()"
-      expect(@constructor.get_constructor(input).type)
-             .not_to eq("CONSTRUCTOR")
+      expect(@constructor.get_constructor(input))
+             .to eq(nil)
     end
   end
 

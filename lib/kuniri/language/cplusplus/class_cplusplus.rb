@@ -19,6 +19,8 @@ module Languages
           result = detect_class(pLine)
           return nil unless result
 
+          result = remove_unnecessary_information(result)
+
           @log.write_log("Info: Detect class")
 
           classCaptured = Languages::ClassData.new
@@ -37,7 +39,7 @@ module Languages
       protected
 
         def detect_class(pLine)
-          regexExpression = /^\s*class\s+(.*)/
+          regexExpression = /^\s*class\s+(\w+).*/
           return nil unless pLine =~ regexExpression
           return pLine.scan(regexExpression)[0].join("")
         end
@@ -51,7 +53,11 @@ module Languages
         end
 
       def remove_unnecessary_information(pString)
-        return pString.gsub(/\s|:|{/, "") if pString =~ /\s|{|:/
+        pString.gsub!(/\s+/, " ") if pString =~ /\s+/
+        pString.gsub!(/\s+$/, "") if pString =~ /\s+$/
+        pString.gsub!(/^\s+/, "") if pString =~ /^\s+/
+        pString.gsub!(/:/, "") if pString =~ /:/
+        pString.gsub!(/\s*\{/, " {") if pString =~ /\s*\{/
         return pString
       end
 
