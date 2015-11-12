@@ -1,4 +1,4 @@
-// First comment
+// First comment;
 #include "simple_single_line_comment_class"
 
 // Comment 2

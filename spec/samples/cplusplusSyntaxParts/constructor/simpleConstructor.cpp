@@ -1,17 +1,5 @@
 class Simple1 {
   Simple1::Simple1(){
-  	if (3 > 2)
-  	{
-  		/* code */
-  	}
-  	if (u && y)
-  	{
-  		/* code */
-  	}
-  	else if (u == 1)
-  	{
-  		/* code */
-  	}
   }
 
 }

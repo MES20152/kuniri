@@ -10,6 +10,9 @@ SimpleClass::simple1(){
 
     i+=1;
   }
+  do{
+
+  }while(i < num );
 }
 
 SimpleClass::simple2 (int i, int num){

@@ -226,7 +226,7 @@ RSpec.describe Languages::CplusplusSyntax do
   context "Conditional line" do
     it "Correct state transition (Method)." do
       path =
-        "spec/samples/cplusplusSyntaxParts/conditionalStatment/methodConditional.cpp"
+        "spec/samples/cplusplusSyntaxParts/conditionalStatement/methodConditional.cpp"
 
       expect(@syntax.state)
         .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
@@ -237,7 +237,7 @@ RSpec.describe Languages::CplusplusSyntax do
 
     it "Correct data capture (conditional - method)" do
        path =
-        "spec/samples/cplusplusSyntaxParts/conditionalStatment/methodConditional.cpp"
+        "spec/samples/cplusplusSyntaxParts/conditionalStatement/methodConditional.cpp"
 
       @syntax.analyse_source(path)
       expect(@syntax.fileElements[0].classes[0].methods[0].name)
@@ -263,7 +263,7 @@ RSpec.describe Languages::CplusplusSyntax do
 
     it "Correct state transition (Constructor)." do
       path = "spec/samples/cplusplusSyntaxParts/" +
-              "constructor/simpleConstructor.cpp"
+              "conditionalStatement/constructorConditional.cpp"
 
       expect(@syntax.state)
         .to be_instance_of(StateMachine::OOStructuredFSM::IdleState)
@@ -274,7 +274,7 @@ RSpec.describe Languages::CplusplusSyntax do
 
     it "Correct data capture (conditional - method)" do
        path = "spec/samples/cplusplusSyntaxParts/" +
-                "constructor/simpleConstructor.cpp"
+                "conditionalStatement/constructorConditional.cpp"
 
       @syntax.analyse_source(path)
       expect(@syntax.fileElements[0].classes[0].constructors[0].name)
@@ -303,6 +303,8 @@ RSpec.describe Languages::CplusplusSyntax do
       expect(@syntax.fileElements[0].classes[0].methods[0].name)
           .to eq("simple1")
 
+      expect(@syntax.fileElements[0].classes[0].methods[0].repetitions[0]
+              .expression).to eq("i < num")
       expect(@syntax.fileElements[0].classes[0].methods[0].repetitions[0]
               .expression).to eq("i < num")
     end
@@ -351,7 +353,7 @@ RSpec.describe Languages::CplusplusSyntax do
               .to eq(" Comment 3: method\n")
       expect(@syntax.fileElements[0].classes[0].methods[1].comments)
               .to eq(" Comment 4: Combo 1\n Comment 5: "+
-                      "Combo 2\n Comment 6: Combo 3 Combo 4\n")
+                      "Combo 2\n Comment 6: Combo 3; Combo 4\n")
       expect(@syntax.fileElements[0].classes[0].attributes[0].comments)
               .to eq (" Comment 7: Attribute\n")
     end
@@ -381,7 +383,7 @@ RSpec.describe Languages::CplusplusSyntax do
       expect(@syntax.fileElements[0].classes[0].constructors[0].comments)
               .to eq("    Constructor\n    initialize\n")
       expect(@syntax.fileElements[0].classes[0].methods[0].comments)
-              .to eq("    First method;\n")
+              .to eq("First method\n")
       expect(@syntax.fileElements[0].classes[0].methods[1].comments)
               .to eq("    methodTwo\n")
       expect(@syntax.fileElements[0].classes[0].methods[2].comments)

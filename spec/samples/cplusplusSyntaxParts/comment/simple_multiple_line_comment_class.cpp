@@ -16,7 +16,10 @@ class Xpto{
   }
 
 
-/*First method;*/
+/*
+First method
+*/
+
   Xpto::method_1(){
     printf("Wake up!");
   }
