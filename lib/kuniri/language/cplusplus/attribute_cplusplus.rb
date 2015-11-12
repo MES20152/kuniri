@@ -49,7 +49,7 @@ module Languages
       # Override
       def detect_attribute(pLine)
 
-        regexExp = /^\s*(\w*\s+.*;)\s*/
+        regexExp = /^\s*(\w+\s+.*;)\s*/
         return nil unless pLine =~ regexExp
         return pLine.scan(regexExp)[0].join("")
       end

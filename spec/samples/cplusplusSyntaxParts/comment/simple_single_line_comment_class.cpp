@@ -13,7 +13,7 @@ class Xpto{
 
   // Comment 4: Combo 1
   // Comment 5: Combo 2
-  // Comment 6: Combo 3; Combo 4
+  // Xpto::print();
   int Xpto::method_2 (int krakatoa,int abc){
     return abc;
   }
@@ -21,4 +21,4 @@ class Xpto{
   // Comment 7: Attribute
   int magicAttribute;
 
-}
+};

@@ -353,7 +353,7 @@ RSpec.describe Languages::CplusplusSyntax do
               .to eq(" Comment 3: method\n")
       expect(@syntax.fileElements[0].classes[0].methods[1].comments)
               .to eq(" Comment 4: Combo 1\n Comment 5: "+
-                      "Combo 2\n Comment 6: Combo 3; Combo 4\n")
+                      "Combo 2\n Xpto::print();\n")
       expect(@syntax.fileElements[0].classes[0].attributes[0].comments)
               .to eq (" Comment 7: Attribute\n")
     end

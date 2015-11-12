@@ -39,7 +39,7 @@ module Languages
       protected
 
         def detect_function(pLine)
-          regexExpression = /\s*(\w+)\s*(\w+)\s*::\s*(\w+)\s*\(.*\)\s*/
+          regexExpression = /^\s*(\w+)\s*(\w+)\s*::\s*(\w+)\s*\(.*\)\s*/
           return nil unless pLine =~ regexExpression
 
           return $3
