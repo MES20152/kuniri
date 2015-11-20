@@ -241,24 +241,49 @@ RSpec.describe Languages::CplusplusSyntax do
 
       @syntax.analyse_source(path)
       expect(@syntax.fileElements[0].classes[0].methods[0].name)
-        .to eq("simple1")
+        .to eq("method1")
 
       expect(@syntax.fileElements[0].classes[0].methods[0]
-            .conditionals[0].expression).to eq("3 > 2")
+            .conditionals[0].expression).to eq("x > 3")
       expect(@syntax.fileElements[0].classes[0].methods[0]
             .conditionals[0].type).to eq("IF")
-      expect(@syntax.fileElements[0].classes[0].methods[0]
-            .conditionals[1].expression).to eq("3 > 2")
-      expect(@syntax.fileElements[0].classes[0].methods[0]
-            .conditionals[1].type).to eq("SWITCH")
 
       expect(@syntax.fileElements[0].classes[0].methods[1].name)
-        .to eq("simple2")
+        .to eq("method2")
 
       expect(@syntax.fileElements[0].classes[0].methods[1]
-            .conditionals[0].expression).to eq("\"a\" < \"k\"")
+            .conditionals[0].expression).to eq("b && c")
       expect(@syntax.fileElements[0].classes[0].methods[1]
             .conditionals[0].type).to eq("IF")
+
+      expect(@syntax.fileElements[0].classes[0].methods[2].name)
+        .to eq("method3")
+
+      expect(@syntax.fileElements[0].classes[0].methods[2]
+            .conditionals[0].expression).to eq("b == 3")
+      expect(@syntax.fileElements[0].classes[0].methods[2]
+            .conditionals[0].type).to eq("IF")
+      expect(@syntax.fileElements[0].classes[0].methods[2]
+            .conditionals[1].expression).to eq("b < 7")
+      expect(@syntax.fileElements[0].classes[0].methods[2]
+            .conditionals[1].type).to eq("IF")
+
+      # expect(@syntax.fileElements[0].classes[0].methods[3].name)
+      #   .to eq("method4")
+
+      # expect(@syntax.fileElements[0].classes[0].methods[3]
+      #       .conditionals[0].expression).to eq("x")
+      # expect(@syntax.fileElements[0].classes[0].methods[3]
+      #       .conditionals[0].type).to eq("IF")
+
+      # expect(@syntax.fileElements[0].classes[0].methods[4].name)
+      #   .to eq("method5")
+
+      # expect(@syntax.fileElements[0].classes[0].methods[4]
+      #       .conditionals[0].expression).to eq("y")
+      # expect(@syntax.fileElements[0].classes[0].methods[4]
+      #       .conditionals[0].type).to eq("SWITCH")
+
     end
 
     it "Correct state transition (Constructor)." do
@@ -281,19 +306,19 @@ RSpec.describe Languages::CplusplusSyntax do
           .to eq("Simple1")
 
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
-              .expression).to eq("3 > 2")
+              .expression).to eq("a > b")
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[0]
               .type).to eq("IF")
 
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
-              .expression).to eq("u && y")
+              .expression).to eq("x")
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[1]
-              .type).to eq("IF")
+              .type).to eq("SWITCH")
 
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
-              .expression).to eq("u == 1")
+              .expression).to eq("u && y")
       expect(@syntax.fileElements[0].classes[0].constructors[0].conditionals[2]
-              .type).to eq("ELSIF")
+              .type).to eq("IF")
     end
 
     it "Correct data capture (repetition[while] -  Method)" do
